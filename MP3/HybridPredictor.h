@@ -8,24 +8,19 @@
 using namespace std;
 
 class HybridPredictor {
-
-    public:
-        // hybrid
-        vector<int> chooserTable;
-
-        // bimodal
-        vector<int> bimodalPredictionTable;
-        int bimodalCurrentIndex;
-        void updateBimodal(char actual, char prediction);
-   
-
-        // ghsare
+    private:
         string gbh;
-        vector<int> gsharePredictionTable;
         int gshareCurrentIndex;
+        int bimodalCurrentIndex;
+        vector<int> gsharePredictionTable;
+        vector<int> chooserTable;
+        vector<int> bimodalPredictionTable;
+        int totalPredictions;
+        int missPredictions;
+        string command;
+      
+        void updateBimodal(char actual, char prediction);
         void updategshare(char actual, char prediction);
-
-        HybridPredictor(int bimodalPCBits, int chooserTablePCBits, int gsharePCBits, int numgbh, string trace_file);
         void init(int bimodalPCBits, int chooserTablePCBits, int gsharePCBits, int numgbh);
         void hybridPrediction(string branch, int k,char bimodalPrediction, char gsharePrediction);
         void printTables();
@@ -34,8 +29,7 @@ class HybridPredictor {
         string getBinaryString(string address);
         string xorstring(string value1, string value2);
         void updategbh(char actual);
-        string command;
-
-        int totalPredictions;
-        int missPredictions;  
+    
+     public:
+        HybridPredictor(int bimodalPCBits, int chooserTablePCBits, int gsharePCBits, int numgbh, string trace_file);
 };
