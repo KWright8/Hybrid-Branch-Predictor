@@ -113,8 +113,6 @@ void HybridPredictor::init(int bimodalPCBits, int chooserTablePCBits, int gshare
     for (int i = 0; i < numgbh; i++){
         gbh.push_back('0');
     }
-
-    // printTables();
 }
 
 char HybridPredictor::bimodalP1(string branch, int bimodalPCBits) {
@@ -165,7 +163,6 @@ char HybridPredictor::gshareP1(string branch, int gsharePCBits, int numgbh) {
     char prediction;
     int numMSB = gsharePCBits - numgbh;
 
-
     for (int i  = 0; i < branch.length(); i++){
         if (isalpha(branch.at(i))|| isdigit(branch.at(i))){
             if( branch.at(i) == 'n' or branch.at(i) == 't') {
@@ -188,7 +185,6 @@ char HybridPredictor::gshareP1(string branch, int gsharePCBits, int numgbh) {
         in--;
     }
 
-
     string MSB;
     for (int i = 0; i < numMSB; i++) {
         MSB.push_back(temp.at(i));
@@ -202,7 +198,6 @@ char HybridPredictor::gshareP1(string branch, int gsharePCBits, int numgbh) {
     string xorvalue = xorstring(gbh, LSB);
     string xortemp; 
    
-
     if (xorvalue.size() > numgbh){
         int numRemove = xorvalue.size() - numgbh;
         int ind =  numRemove;
@@ -324,7 +319,6 @@ string HybridPredictor::getBinaryString(string address){
 }
 
 string HybridPredictor::xorstring(string value1, string value2) {
-
     // convert to int
     int v1 = std::stoull(value1, NULL,2);
     int v2 = std::stoull(value2, NULL,2);
